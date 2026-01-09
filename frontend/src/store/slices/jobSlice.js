@@ -37,7 +37,7 @@ const jobSlice = createSlice({
       state.singleJob = action.payload;
     },
     failureForSingleJob(state, action) {
-      state.singleJob = state.singleJob;
+      state.singleJob = {};
       state.error = action.payload;
       state.loading = false;
     },
@@ -88,16 +88,20 @@ const jobSlice = createSlice({
       state.error = action.payload;
     },
 
-    clearAllErrors() {
+    clearAllErrors(state) {
       state.error = null;
-      state.jobs = state.jobs;
+      //state.jobs = state.jobs;
     },
     resetJobSlice(state, action) {
-      state.error = null;
-      state.jobs = state.jobs;
+      // state.error = null;
+      // state.jobs = state.jobs;
+      // state.loading = false;
+      // state.message = null;
+      // state.myJobs = state.myJobs;
+      // state.singleJob = {};
       state.loading = false;
+      state.error = null;
       state.message = null;
-      state.myJobs = state.myJobs;
       state.singleJob = {};
     },
   },
@@ -134,7 +138,7 @@ export const fetchSingleJob = (jobId) => async (dispatch) => {
   try {
     const response = await axios.get(
       `https://project-job-portal-backend-2slk.onrender.com/api/v1/job/get/${jobId}`,
-
+       {withCredentials: true}
     );
     dispatch(jobSlice.actions.successForSingleJob(response.data.job));
     dispatch(jobSlice.actions.clearAllErrors());
@@ -149,7 +153,7 @@ export const postJob = (data) => async (dispatch) => {
     const response = await axios.post(
       `https://project-job-portal-backend-2slk.onrender.com/api/v1/job/post`,
       data,
-      { headers: { "Content-Type": "application/json" } }
+      {withCredentials:true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(jobSlice.actions.successForPostJob(response.data.message));
     dispatch(jobSlice.actions.clearAllErrors());
@@ -164,7 +168,7 @@ export const getMyJobs = () => async (dispatch) => {
   try {
     const response = await axios.get(
       `https://project-job-portal-backend-2slk.onrender.com/api/v1/job/getmyjobs`,
-
+         {withCredentials: true}
     );
     dispatch(jobSlice.actions.successForMyJobs(response.data.myJobs));
     dispatch(jobSlice.actions.clearAllErrors());
@@ -178,10 +182,10 @@ export const deleteJob = (id) => async (dispatch) => {
   try {
     const response = await axios.delete(
       `https://project-job-portal-backend-2slk.onrender.com/api/v1/job/delete/${id}`,
-
+      {withCredentials: true}
     );
     dispatch(jobSlice.actions.successForDeleteJob(response.data.message));
-    dispatch(clearAllJobErrors());
+    dispatch(jobSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(jobSlice.actions.failureForDeleteJob(error.response.data.message));
   }
