@@ -38,7 +38,7 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer/>
-      <ToastContainer position='top-right' theme='dark'/>
+      <ToastContainer position='top-center' theme='dark'/>
     </Router>
    </>
   )
