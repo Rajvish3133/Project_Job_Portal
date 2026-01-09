@@ -134,7 +134,11 @@ export const fetchSingleJob = (jobId) => async (dispatch) => {
   try {
     const response = await axios.get(
       `https://project-job-portal-backend-2slk.onrender.com/api/v1/job/get/${jobId}`,
+<<<<<<< HEAD
    //   { withCredentials: true }
+=======
+      { withCredentials: true }
+>>>>>>> ebc50e88eadd431cc74daea43888d993944eff75
     );
     dispatch(jobSlice.actions.successForSingleJob(response.data.job));
     dispatch(jobSlice.actions.clearAllErrors());
@@ -164,7 +168,11 @@ export const getMyJobs = () => async (dispatch) => {
   try {
     const response = await axios.get(
       `https://project-job-portal-backend-2slk.onrender.com/api/v1/job/getmyjobs`,
+<<<<<<< HEAD
      // { withCredentials: true }
+=======
+      { withCredentials: true }
+>>>>>>> ebc50e88eadd431cc74daea43888d993944eff75
     );
     dispatch(jobSlice.actions.successForMyJobs(response.data.myJobs));
     dispatch(jobSlice.actions.clearAllErrors());
@@ -178,7 +186,11 @@ export const deleteJob = (id) => async (dispatch) => {
   try {
     const response = await axios.delete(
       `https://project-job-portal-backend-2slk.onrender.com/api/v1/job/delete/${id}`,
+<<<<<<< HEAD
      // { withCredentials: true }
+=======
+      { withCredentials: true }
+>>>>>>> ebc50e88eadd431cc74daea43888d993944eff75
     );
     dispatch(jobSlice.actions.successForDeleteJob(response.data.message));
     dispatch(clearAllJobErrors());

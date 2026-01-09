@@ -16,7 +16,11 @@ config({path : "./config/config.env"});
 app.use(cors({
      origin: [
     "http://localhost:5173",
+<<<<<<< HEAD
     "https://project-job-portal-frontend.onrender.com",
+=======
+    "https://project-job-portal-frontend.onrender.com/",
+>>>>>>> ebc50e88eadd431cc74daea43888d993944eff75
   ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
