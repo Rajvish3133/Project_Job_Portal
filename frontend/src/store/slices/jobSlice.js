@@ -136,7 +136,7 @@ export const fetchSingleJob = (jobId) => async (dispatch) => {
       `https://project-job-portal-backend-2slk.onrender.com/api/v1/job/get/${jobId}`,
 <<<<<<< HEAD
    //   { withCredentials: true }
-=======
+
       { withCredentials: true }
 >>>>>>> ebc50e88eadd431cc74daea43888d993944eff75
     );
